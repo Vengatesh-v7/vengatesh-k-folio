@@ -7,9 +7,12 @@ const Skills = () => {
       skills: [
         { name: "React JS", level: 95 },
         { name: "Next JS", level: 90 },
-        { name: "TypeScript", level: 88 },
-        { name: "Tailwind CSS", level: 92 },
+        { name: "React Native", level: 88 },
+        { name: "TypeScript", level: 90 },
         { name: "JavaScript", level: 94 },
+        { name: "Redux", level: 88 },
+        { name: "Tailwind CSS", level: 92 },
+        { name: "HTML/CSS", level: 95 },
       ],
     },
     {
@@ -18,16 +21,26 @@ const Skills = () => {
         { name: "Node JS", level: 90 },
         { name: "Express JS", level: 88 },
         { name: "Nest JS", level: 85 },
-        { name: "RESTful APIs", level: 92 },
+        { name: "Laravel", level: 80 },
       ],
     },
     {
-      title: "Database & Tools",
+      title: "Databases",
       skills: [
         { name: "MongoDB", level: 88 },
         { name: "PostgreSQL", level: 82 },
-        { name: "Git & GitHub", level: 90 },
-        { name: "Docker", level: 75 },
+        { name: "MySQL", level: 80 },
+      ],
+    },
+    {
+      title: "Tools & Collaboration",
+      skills: [
+        { name: "Git & GitHub", level: 92 },
+        { name: "GitLab", level: 85 },
+        { name: "Jira", level: 88 },
+        { name: "VS Code", level: 95 },
+        { name: "Postman", level: 90 },
+        { name: "Figma", level: 82 },
       ],
     },
   ];

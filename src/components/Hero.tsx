@@ -26,32 +26,53 @@ const Hero = () => {
             </div>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-              I build all kinds of websites including <span className="text-primary font-medium">WordPress themes</span> and{" "}
-              <span className="text-primary font-medium">plugins</span> that scale up company businesses and meet their needs.
-              Currently, I'm living in <span className="font-medium">Cuddalore, Tamil Nadu</span>.
+              Accomplished Full Stack Developer with over <span className="text-primary font-medium">3 years of experience</span> building and maintaining robust web and mobile applications. 
+              Proficient in both <span className="text-primary font-medium">front-end and back-end technologies</span>, consistently delivering high-quality software solutions. 
+              Known for effective teamwork and technical leadership.
             </p>
+
+            {/* Contact Details */}
+            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-primary" />
+                <span>vengateshkv123@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <a href="tel:+919003638125" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <span>📞</span>
+                  <span>+91 9003638125</span>
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-primary" />
+                <span>Cuddalore, Tamil Nadu</span>
+              </div>
+            </div>
 
             {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/vengateshk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-card flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover-lift hover-glow"
+                aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/vk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-card flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover-lift hover-glow"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="mailto:vengatesh@example.com"
+                href="mailto:vengateshkv123@gmail.com"
                 className="w-10 h-10 rounded-full bg-card flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover-lift hover-glow"
+                aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
               </a>

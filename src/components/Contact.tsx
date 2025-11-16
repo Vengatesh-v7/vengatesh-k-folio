@@ -2,20 +2,25 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      value: "vengatesh@example.com",
-      href: "mailto:vengatesh@example.com",
+      value: "vengateshkv123@gmail.com",
+      href: "mailto:vengateshkv123@gmail.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+91 XXXXX XXXXX",
-      href: "tel:+91XXXXXXXXXX",
+      value: "+91 9003638125",
+      href: "tel:+919003638125",
     },
     {
       icon: MapPin,
@@ -24,6 +29,50 @@ const Contact = () => {
       href: "#",
     },
   ];
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // User needs to get this from web3forms.com
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Message sent successfully! ✅",
+          description: "Thank you for reaching out. I'll get back to you soon!",
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-20 bg-background">
@@ -71,49 +120,68 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-card rounded-2xl p-8 shadow-md animate-fade-in-right">
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Your Name
+                  Your Name *
                 </label>
                 <Input
                   id="name"
+                  name="name"
                   placeholder="John Doe"
                   className="w-full"
+                  required
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email Address
+                  Email Address *
                 </label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="john@example.com"
                   className="w-full"
+                  required
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
+                  Message *
                 </label>
                 <Textarea
                   id="message"
+                  name="message"
                   placeholder="Tell me about your project..."
                   rows={5}
                   className="w-full resize-none"
+                  required
                 />
               </div>
 
               <Button
                 type="submit"
                 size="lg"
+                disabled={isSubmitting}
                 className="w-full bg-accent hover:bg-accent/90 hover-lift hover-glow"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
+
+              <p className="text-xs text-muted-foreground text-center">
+                Get your free Web3Forms access key at{" "}
+                <a
+                  href="https://web3forms.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  web3forms.com
+                </a>
+              </p>
             </form>
           </div>
         </div>
